@@ -4,8 +4,8 @@ The functions in this module allow you to perform the steps of registering your 
 
 ### Prerequisites 
 
-- You must install the correct version of Azure Powershell, and download the Azure Stack tools
-  - For Integrated Systems, see [Install Powershell for Azure Stack](https://docs.microsoft.com/azure-stack/operator/azure-stack-powershell-install). To download the Azure Stack tools, either clone this repository or [use the repository zip file](https://github.com/Azure/AzureStack-Tools/archive/master.zip).
+- You must install Azure Stack compatible Az PowerShell module, and download the Azure Stack tools
+  - For Integrated Systems, see [Install Az Powershell for Azure Stack](https://docs.microsoft.com/en-us/azure-stack/operator/powershell-install-az-module). To download the Azure Stack tools, either clone this repository or [use the repository zip file](https://github.com/Azure/AzureStack-Tools/archive/az.zip).
   - For ASDK: see [post-deployment configuration](https://docs.microsoft.com/azure-stack/asdk/asdk-post-deploy), which covers both the PowerShell for Azure Stack installation and downloading of the Azure Stack tools.
 - The registration functions must be run on a machine that has access to the Privileged Endpoint. 
 - You must have access to an Azure subscription, and your Azure account must be an Owner of the subscription.
@@ -22,7 +22,7 @@ In a connected environment, to register with Azure, allow the download of market
 
 ### Set the correct Azure Powershell Context
 ```powershell
-Login-AzureRmAccount -Subscription '<Your Azure Subscription>' -Environment '<The Azure Environment where subscription was created>'
+Login-AzAccount -Subscription '<Your Azure Subscription>' -Environment '<The Azure Environment where subscription was created>'
 ```
 
 ### Complete registration / activation 
@@ -46,7 +46,11 @@ In a connected environment, to re-register with Azure using the existing registr
 
 ### Set the correct Azure Powershell Context
 ```powershell
+<<<<<<< HEAD
 Login-AzureRmAccount -Subscription '<Your Azure Subscription used during existing registration>' -Environment '<The Azure Environment where subscription was created>'
+=======
+Login-AzAccount -Subscription '<Your Azure Subscription used during existing registration>' -Environment '<The Azure Environment where subscription was created>'
+>>>>>>> 871f185428bb28605c996ebbf06c9651f7664233
 ```
 
 ### Re-Registration
@@ -96,7 +100,7 @@ You must use the registration token created in the step above and perform the be
 [!NOTE] Remember to download and import the RegisterWithAzure.psm1 module before running the below commands
 ```powershell
 # Log in to the correct Azure Powershell context
-Login-AzureRmAccount -Subscription '<Your Azure Subscription>' -Environment '<The Azure Environment where subscription was created>'
+Login-AzAccount -Subscription '<Your Azure Subscription>' -Environment '<The Azure Environment where subscription was created>'
 # Create a registration resource in Azure
 Register-AzsEnvironment -RegistrationToken "<Registration token text value>"
 ```
@@ -139,7 +143,10 @@ UnRegister-AzsEnvironment -RegistrationToken "<original registration token text 
 Once the above steps are complete you must go through the steps for registering in a disconnected environment but you will need to update parameters on the registration token (if necessary) and ensure
 that commands performed on the public Azure connected machine are performed under the new Azure Powershell context.
 
+<<<<<<< HEAD
 
+=======
+>>>>>>> 871f185428bb28605c996ebbf06c9651f7664233
 # Remote Management
 The functions in this module allows to enable remote management on Azure Stack which are registered in connected mode. Additional details can be found in [documentation](https://docs.microsoft.com/en-us/azure/azure-stack/azure-stack-register).
 Note: Remote Management is only supported from AzureStack 2008 release onwards.
@@ -169,7 +176,11 @@ In a connected environment, to enable remote management you must be logged in to
 
 ### Set the correct Azure Powershell Context
 ```powershell
+<<<<<<< HEAD
 Login-AzureRmAccount -Subscription '<Your Azure Subscription>' -Environment '<The Azure Environment where subscription was created>'
+=======
+Login-AzAccount -Subscription '<Your Azure Subscription>' -Environment '<The Azure Environment where subscription was created>'
+>>>>>>> 871f185428bb28605c996ebbf06c9651f7664233
 ```
 
 ### Initiate remote management enable 
@@ -180,4 +191,7 @@ $name = "RedmondStack-DefaultProvider"
 Enable-AzsCloudConnection -LinkedSubscriptionName $name -PrivilegedEndpoint "<Computer Name>-ERCS01" -ResourceGroupName "<Name-Of-ResourceGroup>"
 ```
 The process takes between 10 and 15 minutes.
+<<<<<<< HEAD
 
+=======
+>>>>>>> 871f185428bb28605c996ebbf06c9651f7664233

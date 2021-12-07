@@ -1,20 +1,4 @@
-# Connection Scripts
-
-  > [!Note]
-  > For Azure Stack versions 1903 or earlier, please use the code from the tag [PRE-1904](https://github.com/Azure/AzureStack-Tools/tree/PRE-1904). For the Azure Stack version 1902 and 1903, the work around mentioned in the [issue](https://github.com/Azure/AzureStack-Tools/issues/504) is also needed 
-
-As a prerequisite, make sure that you installed the correct PowerShell modules and versions:
-
-For Azure stack 1901 or later
-
-```powershell
-Install-Module -Name AzureRM -RequiredVersion 2.4.0
-Install-Module -Name AzureStack -RequiredVersion 1.7.0
-```
-
-For all other azure stack versions, please follow the instructions at https://aka.ms/azspsh for the needed azure powershell
-
-This tool set allows you to connect to an Azure Stack Development Kit (ASDK) instance from an external personal laptop. You can then access the portal or log into that environment via PowerShell.
+For prerequisite refer README file at the root of this repo
 
 Instructions below are relative to the .\Connect folder of the [AzureStack-Tools repo](..).
 
@@ -71,13 +55,13 @@ To target your Azure Stack instance as a tenant, an AzureRM environment needs to
 
 
 ```powershell
-Add-AzureRMEnvironment -Name AzureStack -ArmEndpoint "https://management.local.azurestack.external"
+Add-AzEnvironment -Name AzureStack -ArmEndpoint "https://management.local.azurestack.external"
 ```
 
 To create an administrator environment use the below. The ARM endpoint below is the administrator default for a one-node environment.
 
 ```powershell
-Add-AzureRMEnvironment -Name AzureStackAdmin -ArmEndpoint "https://adminmanagement.local.azurestack.external"
+Add-AzEnvironment -Name AzureStackAdmin -ArmEndpoint "https://adminmanagement.local.azurestack.external"
 ```
 
 Connecting to your environment requires that you obtain the value of your Directory Tenant ID. For **Azure Active Directory** environments provide your directory tenant name:
@@ -95,11 +79,11 @@ $TenantID = Get-AzsDirectoryTenantId -ADFS -EnvironmentName AzureStackAdmin
 After registering the AzureRM environment, cmdlets can be easily targeted at your Azure Stack instance. For example:
 
 ```powershell
-Login-AzureRmAccount -EnvironmentName "AzureStack" -TenantId $TenantID
+Login-AzAccount -EnvironmentName "AzureStack" -TenantId $TenantID
 ```
 
 Similarly, for targeting the administrator endpoints:
 
 ```powershell
-Login-AzureRmAccount -EnvironmentName "AzureStackAdmin" -TenantId $TenantID
+Login-AzAccount -EnvironmentName "AzureStackAdmin" -TenantId $TenantID
 ```

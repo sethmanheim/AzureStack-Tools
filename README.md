@@ -1,6 +1,6 @@
-
 # Azure Stack
 
+<<<<<<< HEAD
 These tools are meant for use with **Azure Stack Hub** and Integrated Systems
 
 master branch contains the tools compatible with AzureRm version of azure powershell.
@@ -17,6 +17,31 @@ Obtain the tools by cloning the git repository. Switch to az branch for Az power
 
 Or download the tools with the instructions from the documentaion page https://docs.microsoft.com/en-us/azure-stack/operator/azure-stack-powershell-download
 
+=======
+These tools are meant for use with **Azure Stack Development Kit** and Integrated Systems running build 2002 and up. For prior builds use AzureRM module supported version here: https://github.com/Azure/AzureStack-Tools/tree/master
+
+## Dependency
+
+To use these tools, obtain Azure Stack compatible Az PowerShell module.
+Az module - refer for installation related instructions https://docs.microsoft.com/en-us/azure-stack/operator/powershell-install-az-module
+
+Obtain the tools by cloning the git repository.
+
+```commandline
+git clone https://github.com/Azure/AzureStack-Tools.git --recursive
+cd AzureStack-Tools
+git checkout az
+```
+
+Otherwise download the tools as follows:
+
+```powershell
+[Net.ServicePointManager]::SecurityProtocol = [Net.SecurityProtocolType]::Tls12
+invoke-webrequest https://github.com/Azure/AzureStack-Tools/archive/az.zip -OutFile az.zip
+expand-archive az.zip -DestinationPath . -Force
+cd AzureStack-Tools-az
+```
+>>>>>>> 871f185428bb28605c996ebbf06c9651f7664233
 
 Instructions below are relative to the root of the repo.
 
